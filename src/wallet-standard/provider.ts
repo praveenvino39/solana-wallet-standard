@@ -57,17 +57,13 @@ export class MySolana extends EventEmitter {
   };
 
   signMessage = async (message: any, t = "utf8") => {
-    console.log("SignMessage", message);
     const { signature, publicKey } = await this.sendRequestToNative({
       method: "sign_message",
-      params: { message, t },
+      params: { message: bs58.encode(message), t },
     });
     const pkey = new PublicKey(publicKey);
-    const messageInUtf8Array = Object.keys(signature).map(
-      (key) => signature[key]
-    );
     return {
-      signature: Buffer.from(Uint8Array.from(messageInUtf8Array)),
+      signature: bs58.decode(signature),
       publicKey: pkey,
     };
   };
