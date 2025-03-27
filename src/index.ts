@@ -14,5 +14,4 @@ export { MySolana } from "./wallet-standard/provider";
     value: mySolana,
   });
   initialize(mySolana);
-  alert("WALLET REGISTERED");
 })();
