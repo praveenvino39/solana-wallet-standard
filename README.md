@@ -1,1 +1,1 @@
-# wallet_connect_v2_bundler
+# Solana wallet adapter
